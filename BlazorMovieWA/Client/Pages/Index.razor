@@ -1,0 +1,23 @@
+﻿@page "/"
+@inject IMovieRepository movieRepository
+
+<h3>In Theaters</h3>
+<MovieList Movies="InTheaters" />
+
+<h3>Upcoming Releases</h3>
+<MovieList Movies="UpcomingReleases" />
+
+@code{
+
+
+    private List<Movie> InTheaters;
+    private List<Movie> UpcomingReleases;
+    protected async override Task OnInitializedAsync()
+    {
+        var response = await movieRepository.GetIndexPageDTO();
+        InTheaters = response.InTheaters;
+        UpcomingReleases = response.UpcomingReleases;
+
+    }
+
+}

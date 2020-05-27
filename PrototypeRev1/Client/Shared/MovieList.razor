@@ -1,0 +1,12 @@
+﻿
+@foreach (var mList in MoviesP)
+{
+    <IndividualMovie movie="mList"/>
+}
+
+
+@code {
+
+    [Parameter] public List<Movies> MoviesP { get; set; }
+
+}
